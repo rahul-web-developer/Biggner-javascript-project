@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Project</title>
+
+    <style>
+
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            text-transform: capitalize;
+             font-family: sans-serif;
+        }
+
+        body{
+            background-color: #f4c531;
+
+
+        }
+
+        html,body{
+          width: 100%;
+
+          height: 100%;
+        }
+
+        /* .container{ */
+             /* background-color: #ffffff;
+             font-size: 16px;
+             padding: 3em 2.8em;
+             width: 90vw;
+             max-width: 32em;
+             position: relative;
+             transform: translateX(-50%);
+             left: 50%;
+             top: 1em;
+             border-radius: 0.6em;
+             box-shadow: 0 1.2em rgba(42, 32  , 0, 0.2);
+                   
+             height: auto;
+             width: 50%;
+             color: black;
+             padding: 2em;
+             border: 2px solid red; */
+
+             /* width: 50%;
+             height: auto
+             ;
+             border: 2px solid red;
+            } */
+
+
+            /* .search-container{
+               width: 10%;
+
+               display: grid;
+               grid-template-columns: 9fr 3fr;
+               gap: 1.2em;
+
+            } */
+
+
+            /* .search-container input{
+              font-size: 1em;
+              padding: 0.6em;
+              border: none;
+              width: 100%;
+              outline: none;
+              overflow: hidden;
+              border-bottom: 2px solid #202030;
+
+            } */
+
+
+
+
+            /* #search-button{
+              font-size: 1em;
+              background-color: #f4c531;
+              font-weight: 600 ;
+              border-radius: 0.3em;
+            }
+
+
+
+            /* img{
+                display: block;
+                /* width: 100%; */
+                /* height: 50%;
+
+                object-fit: contain;
+                background-repeat: no-repeat;
+                background-size: cover;
+                width: 50%;
+                margin: auto;
+                margin: 1.8em  auto 0 auto;
+                overflow: hidden;
+            }
+
+            #result{
+              width: 100%;
+              height: 100%;
+              overflow: hidden;
+            } */ 
+
+            .container{
+              width: 50%;
+              /* height: 100% ; */
+              margin: 50px auto;
+              padding: 3rem;
+              border: 2px solid red;
+              position: relative;
+              background: white;
+
+            }
+
+
+
+
+            .search-container{
+              display: flex;
+              align-items: center;
+              justify-content: center;
+               position: relative;
+               bottom: 10px;
+            }
+
+            img{
+              width: 50%;
+              object-fit: cover;
+              background-size: cover;
+              background-position: center;
+              background-repeat: no-repeat;
+
+            }
+
+            .search-container input{
+              width: 90%;
+
+              
+              outline: none;
+              border: none;
+
+              border-bottom: 2px solid black;
+              padding: 0.5rem;
+
+
+            
+
+            }
+
+
+            .search-container button{
+              padding: 0.5rem;
+
+              background-color: yellow;
+              font-weight: 14px;
+              cursor: pointer;
+
+            }
+
+
+
+            #recipe pre{
+              white-space: pre-wrap;
+              word-wrap: break-word;
+              padding: 2.5em 1.2em 1.2em 1.2em;
+            }
+
+           #recipe{
+            cursor: pointer;
+            position: absolute;
+            background-color: #ffff;
+            min-height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            border-radius: 0.6em;
+            display: none;
+           }
+
+           .details{
+            background-color: #f4c531;
+            position: relative;
+            margin: -4.3em 0 0 0 ;
+            text-align: center;
+            padding: 0.6em 0 ;
+           }
+
+           .details h2{
+            font-size: 1.2em;
+
+            font-weight: 600;
+           }
+
+
+           .details h4{
+            font-size: 1em ;
+            font-weight: 400;
+           }
+           #hide-recipe{
+            font-size: 1em;
+            position: relative;
+            width: 1.8em;
+            height: 1.8em;
+            background-color: #f4c531;
+            border:none;
+            top: 1.2em;
+            left: 90%;
+            border-radius: 0.3em;
+            cursor: pointer;
+
+           }
+
+
+           #show-recipe{
+
+            cursor: pointer;
+            font-size: 1em;
+            position: relative;
+            left: 75%;
+
+            padding: 0.9wm 0.6em;
+            background-color: #f4c531;
+            border: none;
+            top: 1.5em;
+            border-radius: 0.3em;
+            font-weight: 600;
+            padding: 1em;
+           }
+
+
+           ul{
+            font-size: 1em;
+            position: relative;
+            display: grid;
+            grid-template-columns: auto auto;
+            gap: 0.8em 1.1em;
+            padding: 1.2em 0 0 1.2em;
+
+           }
+
+
+           @media screen and (max-width:500px) {
+
+            .container{
+              font-size: 14px;
+           /* display: none; */
+            }
+
+            body{
+              background-color: red;
+            }
+            
+           }
+
+    </style>
+</head>
+<body>
+
+
+    <div class="container">
+
+
+
+        <div class="search-container">
+            <input type="text" placeholder="Type A Dish Name Here.." id="user-input">
+
+            <button id="search-button">
+                Search
+            </button>
+
+     
+             
+
+        </div> 
+        <!-- search-container end here -->
+        <div class="result-store">
+
+        <div id="result">
+
+
+
+        </div>
+
+
+
+     </div>  
+     <!-- result parent end here -->
+
+
+    </div>
+    <!-- container end here -->
+
+
+
+
+    <script>
+
+  let result = document.querySelector("#result")
+
+  let search = document.getElementById('search-button');
+
+
+  let url = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
+
+  
+  let userinpt = document.querySelector("#user-input").value;
+
+  
+
+  console.log(result);
+  console.log(url);
+  console.log(search);
+  console.log("user",userinpt);
+
+  // userinpt.addEventListener('onkeyup',function(value){
+
+  //   console.log(value)
+
+  // })
+
+
+  search.addEventListener('click',function(){
+    let userinpt = document.querySelector("#user-input").value;
+
+    if(userinpt.length == 0){
+      result.innerHTML = `<h3>input fieled cannot be empty`;
+
+    }else{
+
+     
+            
+      fetch(url+userinpt)
+      
+  .then((data)=>{
+    return data.json()
+
+  }).then((data)=>{
+    // console.log(data.meals[0])
+
+    let mymeal = data.meals[0];
+
+    // console.log(mymeal);
+    // console.log(mymeal.strMeals);
+    // console.log(mymeal.strArea);
+    // console.log(mymeal.strArea);
+    // console.log("thumbs me",mymeal.strMealsThumb);
+    // console.log(mymeal.strIntructions);
+
+let thumb = mymeal.strMealThumb;
+
+// console.log("i am thumb",thumb)
+    let count = 1;
+
+    let ingredients = [];
+
+    for(let i in mymeal){
+      let ingredient = "";
+
+      let measure = "";
+
+      if(i.startsWith("strIngredient") && mymeal[i]){
+
+
+        // console.log("before" ,ingredient,measure)
+
+
+        ingredient = mymeal[i];
+
+        measure = mymeal[`strMeasure`+count];
+
+        count += 1;
+
+
+        // console.log("After" ,ingredient,measure)
+
+        ingredients.push(`${measure} ${ingredient}`)
+
+      }
+    }
+
+console.log(ingredients)
+
+   
+console.log(result.innerHTML = `<img src=${thumb} id="fixed"> 
+
+<div class="details">
+<h2>${mymeal.strMeal}</h2>
+<h4>${mymeal.strArea}</h4>
+
+
+  </div>
+  <div id="ingredient-con"></div>
+
+    <div id="recipe">
+      <button id="hide-recipe">X</button>
+      <pre id="instructions">${mymeal.strInstructions}</pre>
+  </div>
+
+  <button id="show-recipe">View Recipe</button>
+
+  
+
+`);
+
+let ingredientcon     = document.querySelector('#ingredient-con')
+
+
+let parent  = document.createElement("ul");
+
+let recipe = document.querySelector("#recipe")
+let hiderecipe = document.querySelector("#hide-recipe");
+
+let showrecipe = document.getElementById("show-recipe");
+
+
+// console.log("inetgr Rahul" ,ingredients)
+ingredients.forEach(element => {
+  
+  let child = document.createElement("li");
+
+  child.innerHTML = element;
+
+  parent.appendChild(child)
+  ingredientcon.appendChild(parent)
+});
+
+hiderecipe.addEventListener('click',function(){
+  recipe.style.display = "none";
+
+})
+
+showrecipe.addEventListener('click',function(){
+  recipe.style.display = "block";
+
+})
+
+
+
+  })
+  .catch((error)=>{
+    result.innerHTML = `<h3>Invalid Input</h3>`;
+  })
+
+  userinpt = "";
+
+    }
+
+  
+
+})
+//   fetch(url )
+//   .then((data)=>{
+//     return data.json()
+
+//   }).then((data)=>{
+//     // console.log(data.meals[0])
+
+//     let mymeal = data.meals[0];
+
+//     console.log(mymeal);
+//     console.log(mymeal.strMeals);
+//     console.log(mymeal.strArea);
+//     console.log(mymeal.strArea);
+//     console.log("thumbs me",mymeal.strMealsThumb);
+//     console.log(mymeal.strIntructions);
+
+// let thumb = mymeal.strMealThumb;
+
+// // console.log("i am thumb",thumb)
+//     let count = 1;
+
+//     let ingredients = [];
+
+//     for(let i in mymeal){
+//       let ingredient = "";
+
+//       let measure = "";
+
+//       if(i.startsWith("strIngredient") && mymeal[i]){
+
+
+//         // console.log("before" ,ingredient,measure)
+
+
+//         ingredient = mymeal[i];
+
+//         measure = mymeal[`strMeasure`+count];
+
+//         count += 1;
+
+
+//         // console.log("After" ,ingredient,measure)
+
+//         ingredients.push(`${measure} ${ingredient}`)
+
+//       }
+//     }
+
+// console.log(ingredients)
+
+   
+// console.log(result.innerHTML = `<img src=${thumb} id="fixed"> 
+
+// <div class="details">
+// <h2>${mymeal.strMeal}</h2>
+// <h4>${mymeal.strArea}</h4>
+
+
+//   </div>
+//   <div id="ingredient-con"></div>
+
+//     <div id="recipe">
+//       <button id="hide-recipe">X</button>
+//       <pre id="instructions">${mymeal.strInstructions}</pre>
+//   </div>
+
+//   <button id="show-recipe">View Recipe</button>
+
+  
+
+// `);
+
+// let ingredientcon     = document.querySelector('#ingredient-con')
+
+
+// let parent  = document.createElement("ul");
+
+// let recipe = document.querySelector("#recipe")
+// let hiderecipe = document.querySelector("#hide-recipe");
+
+// let showrecipe = document.getElementById("show-recipe");
+
+
+// // console.log("inetgr Rahul" ,ingredients)
+// ingredients.forEach(element => {
+  
+//   let child = document.createElement("li");
+
+//   child.innerHTML = element;
+
+//   parent.appendChild(child)
+//   ingredientcon.appendChild(parent)
+// });
+
+// hiderecipe.addEventListener('click',function(){
+//   recipe.style.display = "none";
+
+// })
+
+// showrecipe.addEventListener('click',function(){
+//   recipe.style.display = "block";
+
+// })
+
+
+
+//   })
+
+
+
+
+//   fetch(url +"burger")
+//   .then((response)=>{
+//     return response.json()
+//   })
+//   .then((data)=>{
+//     // console.log(data)
+//     let mymeal = data.meals[0]
+
+//     // console.log(mymeal.starMealThumb)
+//     // consle.log(mymeal)
+//     // console.log(mymeal.strMeal)
+//     // console.log(mymeal.strArea)
+//     // console.log(mymeal.strInstructions)
+
+
+//     let count = 1;
+
+//     let ingredients = [];
+
+//     for(let i in mymeal){
+//         let ingrediens = "";
+
+//         let measure = "";
+
+//         if(i.startsWith("strIngredient")&& mymeal[i]){
+//          ingrediens = mymeal[i];
+//          measure = mymeal[`strMeasure` +count]
+//              count += 1;
+//              console.log('inger measure',ingrediens,measure)
+
+//              ingredients.push(`${measure} ${ingrediens}`)
+//         }
+//     }
+
+//     // console.log("dat"ingredients)
+
+//     result.innerHTML = `<img src=${mymeal.starMealThumb}>`;
+
+
+//     // console.log(mymeal.starMealThumb,"last")
+//   })
+
+
+
+// console.log("hello",ingredients)
+
+
+
+    </script>
+    
+</body>
+</html>
